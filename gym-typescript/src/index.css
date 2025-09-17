@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import "tailwindcss";  /* Импорт Tailwind v4 */
+@import "tailwindcss";  
 
 html,
 body,
@@ -11,9 +11,9 @@ body,
     @apply text-gray-500
 }
 
-/* Определяем кастомные стили в @theme */
+
 @theme {
-  /* Кастомные цвета */
+
   --color-gray-20: #F8F4EB;
   --color-gray-50: #EFE6E6;
   --color-gray-100: #DFCCCC;
@@ -24,7 +24,7 @@ body,
   --color-secondary-400: #FFCD5B;
   --color-secondary-500: #FFC132;
 
-  /* Кастомные фоновые изображения */
+
   --background-image-gradient-yellowred: linear-gradient(90deg, #FF616A 0%, #FFC837 100%);
   --background-image-mobile-home: url('/assets/HomePageGraphic.png');
   --background-image-evolvetext: url('/assets/EvolveText.png');
@@ -32,19 +32,18 @@ body,
   --background-image-sparkles: url('/assets/Sparkles.png');
   --background-image-circles: url('/assets/Circles.png');
 
-  /* Кастомные шрифты */
   --font-dmsans: 'DM Sans', sans-serif;
   --font-montserrat: 'Montserrat', sans-serif;
 
-  /* Кастомные breakpoints */
+  
   --breakpoint-xs: 480px;
   --breakpoint-sm: 768px;
   --breakpoint-md: 1060px;
 }
 
-/* Если нужны кастомные утилиты */
+
 @layer utilities {
-  /* Например, для использования кастомных цветов как утилит */
+ 
   .bg-gradient-yellowred {
     background-image: var(--background-image-gradient-yellowred);
   }
@@ -65,9 +64,9 @@ body,
   }
 }
 
-/* Если нужны кастомные компоненты */
+
 @layer components {
   .custom-text {
-    @apply font-dmsans text-primary-500; /* Пример использования кастомного шрифта и цвета */
+    @apply font-dmsans text-primary-500; 
   }
 }

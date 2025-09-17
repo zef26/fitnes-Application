@@ -1,6 +1,6 @@
-@import  Navbar from "@scenes/navbar";
+import Navbar from "./scenes/navbar"
 
-function App() {
+function App() { 
 
 
   return (
