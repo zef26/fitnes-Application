@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Logo from "../../assets/Logo.png";
-import { select } from "framer-motion/client";
 import Link from "./Link";
-import type { SelectedPage } from "@/shared/types";
+import type { SelectedPage } from "../../shared/types";
+import useMediaQuery from "../../hooks/useMediaQuery";
+import ActionButton from "../../shared/ActionButton";
+import { div } from "framer-motion/client";
 
 type Props = {
      selectedPage: SelectedPage;
@@ -12,13 +14,17 @@ type Props = {
 
 const Navbar = ({selectedPage, setSelectedPage}: Props) => {
   const flexBeetwen = "flex items-center justify-between";
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+  const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
+
   return (
     <nav>
       <div className={`${flexBeetwen} fixed top-0 z-30 w-full py-6 bg-white`}>
         <div className={`${flexBeetwen} mx-auto w-5/6`}>
           <div className={`${flexBeetwen} w-full gap-16`}>
             <img src={Logo} alt="logo" />
-            <div className={`${flexBeetwen} w-full`}>
+          {isAboveMediumScreens ? (
+              <div className={`${flexBeetwen} w-full`}>
               <div className={`${flexBeetwen} gap-8 text-sm`}>
                 <Link page="Home" selectedPage={selectedPage} />
                 <Link page="Benefits" selectedPage={selectedPage} />
@@ -27,14 +33,37 @@ const Navbar = ({selectedPage, setSelectedPage}: Props) => {
               </div>
               <div className={`${flexBeetwen} gap-8`}>
                 <p>Sign In</p>
-                <button className="rounded-full bg-secondary-500 py-2 px-5 cursor-pointer ">
+                <ActionButton setSelectedPage={setSelectedPage} >
                   Become a member
+                </ActionButton>
+              </div> 
+            </div>) : (
+                <button
+                className="runded-full bg-secondary-500 p-2"
+                onClick={() => setIsMenuToggled(!isMenuToggled)}>
+                    <Bars3Icon className="h-6 w-6 text-white"/>
                 </button>
-              </div>
-            </div>
+            )}
+            
           </div>
         </div>
       </div>
+
+      {!isAboveMediumScreens && isMenuToggled && (
+        <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl">
+            <div className="flex justify-end p-12">
+                <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
+                    <XMarkIcon className="h-6 w-6 text-gray-400  "/>
+                </button>
+            </div>
+            <div className="ml-[33%] flex flex-col gap-10 text-2xl ">
+                <Link page="Home" selectedPage={selectedPage} />
+                <Link page="Benefits" selectedPage={selectedPage} />
+                <Link page="Our Classes" selectedPage={selectedPage} />
+                <Link page="Contact Us" selectedPage={selectedPage}/>
+              </div>
+        </div>
+      )}
     </nav>
   );
 };
