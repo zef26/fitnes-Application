@@ -5,21 +5,22 @@ import Link from "./Link";
 import type { SelectedPage } from "../../shared/types";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import ActionButton from "../../shared/ActionButton";
-import { div } from "framer-motion/client";
 
 type Props = {
+    isTopOfPage: boolean;
      selectedPage: SelectedPage;
     setSelectedPage: (value: SelectedPage) => void;
 };
 
-const Navbar = ({selectedPage, setSelectedPage}: Props) => {
+const Navbar = ({isOfTopPage, selectedPage, setSelectedPage}: Props) => {
   const flexBeetwen = "flex items-center justify-between";
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
+  const navberBackground = isOfTopPage ? "" : "bg-primary-100 drop-shadow";
 
   return (
     <nav>
-      <div className={`${flexBeetwen} fixed top-0 z-30 w-full py-6 bg-white`}>
+      <div className={`${navberBackground} ${flexBeetwen} fixed top-0 z-30 w-full py-6 bg-white`}>
         <div className={`${flexBeetwen} mx-auto w-5/6`}>
           <div className={`${flexBeetwen} w-full gap-16`}>
             <img src={Logo} alt="logo" />
@@ -50,7 +51,7 @@ const Navbar = ({selectedPage, setSelectedPage}: Props) => {
       </div>
 
       {!isAboveMediumScreens && isMenuToggled && (
-        <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl">
+        <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl  ">
             <div className="flex justify-end p-12">
                 <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
                     <XMarkIcon className="h-6 w-6 text-gray-400  "/>

@@ -1,72 +1,76 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import "tailwindcss";  
+@import "tailwindcss";
 
 html,
 body,
 #root,
-.app{
-    height: 100%;
-    width: 100%;
-    font-family: "DM Sans", sans-serif;
-    @apply text-gray-500
+.app {
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-dmsans);
+  @apply text-gray-500;
 }
 
-
 @theme {
-
+  /* 🎨 Цвета */
   --color-gray-20: #F8F4EB;
   --color-gray-50: #EFE6E6;
   --color-gray-100: #DFCCCC;
   --color-gray-500: #5E0000;
+
   --color-primary-100: #FFE1E0;
   --color-primary-300: #FFA6A3;
   --color-primary-500: #FF6B66;
+
   --color-secondary-400: #FFCD5B;
   --color-secondary-500: #FFC132;
 
-
+  /* 🌅 Фоны */
   --background-image-gradient-yellowred: linear-gradient(90deg, #FF616A 0%, #FFC837 100%);
-  --background-image-mobile-home: url('/assets/HomePageGraphic.png');
-  --background-image-evolvetext: url('/assets/EvolveText.png');
-  --background-image-abstractwaves: url('/assets/AbstractWaves.png');
-  --background-image-sparkles: url('/assets/Sparkles.png');
-  --background-image-circles: url('/assets/Circles.png');
+  --background-image-mobile-home: url('./assets/HomePageGraphic.png');
 
+  /* 🖼 Контент */
+  --content-evolvetext: url('/src/assets/EvolveText.png');
+  --content-abstractwaves: url('/src/assets/AbstractWaves.png');
+  --content-sparkles: url('/src/assets/Sparkles.png');
+  --content-circles: url('/src/assets/Circles.png');
+
+  /* ✍️ Шрифты */
   --font-dmsans: 'DM Sans', sans-serif;
   --font-montserrat: 'Montserrat', sans-serif;
 
-  
+  /* 📱 Breakpoints */
   --breakpoint-xs: 480px;
   --breakpoint-sm: 768px;
   --breakpoint-md: 1060px;
 }
 
-
 @layer utilities {
- 
+  /* Фоновые утилиты */
   .bg-gradient-yellowred {
     background-image: var(--background-image-gradient-yellowred);
   }
   .bg-mobile-home {
     background-image: var(--background-image-mobile-home);
   }
-  .bg-evolvetext {
-    background-image: var(--background-image-evolvetext);
+
+  /* Контентные утилиты */
+  .content-evolvetext::before {
+    content: var(--content-evolvetext);
   }
-  .bg-abstractwaves {
-    background-image: var(--background-image-abstractwaves);
+  .content-abstractwaves::before {
+    content: var(--content-abstractwaves);
   }
-  .bg-sparkles {
-    background-image: var(--background-image-sparkles);
+  .content-sparkles::before {
+    content: var(--content-sparkles);
   }
-  .bg-circles {
-    background-image: var(--background-image-circles);
+  .content-circles::before {
+    content: var(--content-circles);
   }
 }
 
-
 @layer components {
   .custom-text {
-    @apply font-dmsans text-primary-500; 
+    @apply font-dmsans text-primary-500;
   }
 }
