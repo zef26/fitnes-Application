@@ -29,7 +29,7 @@ const Home = ({setSelectedPage}: Props) => {
                 {/* HEADINGS */}
                 <div className='md:-mt-20' >
                     <div className='relative'>
-                        <div className='content-evolvetext absolute -top-20 -left-20 z-[-1]'/>  '>
+                        <div className='content-evolvetext absolute -top-20 -left-20 z-[-1]'/> '>
                         <img src={HomePageText} alt="home-page-text" />
                         </div>
                     </div>
@@ -46,7 +46,7 @@ const Home = ({setSelectedPage}: Props) => {
                     <AnchorLink
                     className='tetx-sm font-bold text-primary-500 underline hover:text-secondary-500'
                     onClick={()=> setSelectedPage(SelectedPage.ContactUs)}
-                    href={`#${SelectedPage.ContactUs}`}
+                     href={`#${SelectedPage.ContactUs}`}
                     >
                         <p>Learn More </p>
                     </AnchorLink>
