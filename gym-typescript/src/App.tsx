@@ -3,9 +3,6 @@ import Navbar from "./scenes/navbar"
 import { SelectedPage } from "./shared/types";
 import Home from "./scenes/home/Home";
 
-
-
-
 function App() { 
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Home);
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
